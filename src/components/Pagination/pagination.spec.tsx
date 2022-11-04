@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { newsApi } from "../../services/newsApi";
 
 import { Pagination } from "./pagination.component";
 
@@ -43,7 +42,6 @@ describe("Home Page", () => {
     render(
       <Pagination
         onPageChange={(newPage) => {
-          console.log("newPage", newPage);
           currentPage = newPage;
         }}
         totalCountOfRegisters={totalCountOfRegisters}
