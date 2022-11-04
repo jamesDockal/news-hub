@@ -38,4 +38,24 @@ describe("Home Page", () => {
 
     expect(await screen.findByText("any_title")).toBeInTheDocument();
   });
+
+  it("should render Pagination component", async () => {
+    jest.spyOn(newsApi, "get").mockImplementation(async () => {
+      return await new Promise((resolve) =>
+        resolve({
+          data: {
+            articles: [
+              {
+                title: "any_title",
+              } as Article,
+            ],
+          },
+        })
+      );
+    });
+
+    render(<Home />);
+
+    expect(screen.getByLabelText("pagination")).toBeInTheDocument();
+  });
 });
